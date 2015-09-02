@@ -52,8 +52,124 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.factory('ClientFactory', function(){
+  return{
+    all: function(){
+      return [
+          { title: 'Cliente 1', id: 1 },
+          { title: 'Cliente 2', id: 2 },
+          { title: 'Cliente 3', id: 3 },
+          { title: 'Cliente 4', id: 4 },
+          { title: 'Cliente 5', id: 5 }
+      ];
+    }
+
+  }
+
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
+
+
+
+//aqui começa conteudo relacionado a cadastro de cliente
+.controller('ClientCtrl', function($scope, $http, ClientFactory, $timeout, $ionicModal) {
+  //essa funcao busca a lista
+  //$scope.clients = ClientFactory.all();
+
+  $scope.all = function(){ 
+    $scope.clients = ClientFactory.all();
+  };
+
+  $scope.newClient = function(){ 
+     console.log('newClient chamada!!');      
+
+     $scope.clientData = {};
+
+      // Create the login modal that we will use later
+      $ionicModal.fromTemplateUrl('templates/client-add.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+        $scope.modal.show();
+  });
+
+      // Triggered in the login modal to close it
+  $scope.closeClientAdd = function() {
+        $scope.modal.hide();
+  };
+
+      // Open the login modal
+  $scope.clientAdd = function() {
+      $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.clientSave = function() {
+        console.log('Saving client', $scope.clientData);
+        var data = $scope.clientData;
+        // $http.post('/someUrl', data).then();
+
+        var caralhoRastejante = data.cnpj;
+        $http({
+          // url: myUrl,
+             url: 'http://localhost/URLLOKA',
+          method: 'POST',
+          data: caralhoRastejante,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        });   
+
+        // Simulate a delay. Remove this and replace with your login
+        // code if using a login system
+        $timeout(function() {
+          $scope.closeLogin();
+        }, 1000);
+  };
+
+}
+
+})
+
+.controller('ClientAddCtrl', function($scope, $http) {
+  
+   $scope.clientData = {};
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/client-add.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeClientAdd = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.clientAdd = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.clientSave = function() {
+    console.log('Saving client', $scope.clientData);
+
+    // Simulate a delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
+  };
+
+})
+
+//aqui termina conteudo relacionado a cadastro de cliente
+
+
 
 .controller('MapCtrl', function($scope, $ionicLoading, $compile) {
       function initialize() { 

@@ -1,0 +1,16 @@
+<ion-view view-title="Cllent">
+  <ion-content>
+    <h1>Client control</h1>
+
+    <div class="buttons">
+      <button class="button button-icon ion-plus" ng-click="newClient()"></button>
+    </div>
+
+    <ion-list>
+      <ion-item ng-repeat="client in clients" href="">
+        {{client.title}}
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

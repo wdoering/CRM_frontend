@@ -1,31 +1,36 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Clients</h1>
+    <h1 class="title">New Client</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeClientAdd()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="clientSave()">
+    <form ng-submit="clientAddSave()">
       <div class="list">
 
         <label class="item item-input">
-          <!-- Descobrir como internacionalizar-->
           <span class="input-label">CNPJ</span>
           <input type="text" ng-model="clientData.cnpj">
+          <!-- <input type="text" ng-model="clientData.CNPJ" ui-mask="999.999.999-99" ng-pattern="/^[0-9]{1,7}[-\.\/]?+$/"> -->
         </label>
         <label class="item item-input">
           <span class="input-label">Nome Fantasia</span>
-          <input type="text" ng-model="clientData.commonName">
+          <input type="text" ng-model="clientData.tradeName">
         </label>
         <label class="item item-input">
           <span class="input-label">Razão Social</span>
-          <input type="text" ng-model="clientData.razaoSocial">
+          <input type="text" ng-model="clientData.legalName">
         </label>
         <label class="item item-input">
           <span class="input-label">Inscrição Estadual</span>
           <input type="text" ng-model="clientData.stateRegistrationNumber">
         </label>
+        <label class="item item-input">
+          <span class="input-label">Contato</span>
+          <input type="text" ng-model="clientData.primaryContactName">
+        </label>
+        
         <label class="item item-input">
           <span class="input-label">Rua</span>
           <input type="text" ng-model="clientData.street">
@@ -36,7 +41,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Bairro</span>
-          <input type="text" ng-model="clientData.district">
+          <input type="text" ng-model="clientData.neighborhood">
         </label>
         <label class="item item-input">
           <span class="input-label">Cidade</span>
@@ -44,31 +49,25 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Estado</span>
-          <input type="text" ng-model="clientData.state">
+          <input type="text" ng-model="clientData.stateID">
         </label>
         <label class="item item-input">
           <span class="input-label">CEP</span>
-          <input type="text" ng-model="clientData.CEP">
+          <input type="text" ng-model="clientData.postalCode">
         </label>
-
+        <label class="item item-input">
+          <span class="input-label">E-mail</span>
+          <input type="text" ng-model="clientData.email">
+        </label>
         
         <label class="item item-input">
         <!-- vou ter que fazer um repeater aqui pra adicionar multiplos números -->
           <span class="input-label">Telefone</span>
           <input type="text" ng-model="clientData.phone">
         </label>
-        
-        <label class="item item-input">
-          <span class="input-label">E-mail</span>
-          <input type="text" ng-model="clientData.email">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Contato</span>
-          <input type="text" ng-model="clientData.PrimaryContactName">
-        </label>
 
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-positive" type="submit">Salvar</button>
         </label>
 
       </div>

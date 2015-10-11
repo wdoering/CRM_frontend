@@ -1,14 +1,23 @@
-<ion-view view-title="Cllent">
+<ion-view view-title="Client">
   <ion-content>
-    <h1>Client control</h1>
+    <h1>Cadastro de clientes</h1>
+    <ion-header-bar class="bar-dark">
 
     <div class="buttons">
       <button class="button button-icon ion-plus" ng-click="newClient()"></button>
     </div>
 
+  </ion-header-bar>
+
+
     <ion-list>
-      <ion-item ng-repeat="client in clients" href="">
-        {{client.title}}
+      <ion-item ng-repeat="client in clients" id="{{client.id}} " ng-click="editClient({{client.id}})" can-swipe="true">
+        
+        {{client.tradeName}}
+        <ion-option-button class="button-light icon ion-heart"></ion-option-button>
+        <ion-option-button class="button-light icon ion-email"></ion-option-button>
+        <ion-option-button ng-click="deleteClient()" class="button-assertive icon ion-trash-a"></ion-option-button>
+        
       </ion-item>
     </ion-list>
 

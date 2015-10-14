@@ -75,6 +75,7 @@ angular.module('starter.controllers', [])
     var clients = response.data;
     console.log(response.data);
     $scope.clients = clients;
+
   });
   
   //abre modal de novo cliente
@@ -103,6 +104,8 @@ angular.module('starter.controllers', [])
         var res = $http.post(urlBase, data);
         res.success(function(data, status, headers, config) {
           console.log('client POST SUCCESS');
+          $scope.clientData.id = data;
+          $scope.clients.push($scope.clientData);
           $scope.closeClientAdd();
 
         });
@@ -113,10 +116,7 @@ angular.module('starter.controllers', [])
       };
 
     };
-    /*receber o CNPJ ao ainvés do clientID
-    * Não vai funcionar deste jeito em produção
-    * 
-    */
+   
   $scope.editClient = function(clientId){
     
      $ionicModal.fromTemplateUrl('templates/client-edit.html', {
@@ -148,19 +148,28 @@ angular.module('starter.controllers', [])
 
       };
 
-      $scope.onSwipeLeftClient = function(){
-        $ionicModal.fromTemplateUrl('templates/client-edit.html', {
-        
-      }).then(function(modal) {
-
-        $scope.modal = modal;
-        $scope.modal.show();
-      });
-
-      };
 
 
     };
+
+
+      $scope.deleteClient = function(clientId, itemIndex){
+        console.log("delete este cliente");
+        
+        var urlBase = "http://localhost:8080/client";
+        var data = {id: clientId};
+        var res = $http.delete(urlBase + "?id=" + clientId);
+        res.success(function(data, status, headers, config) {
+          console.log('client DELETE  SUCCESS' + data);
+          $scope.clients.splice(itemIndex, 1);
+
+        });
+        res.error(function(data, status, headers, config) {
+          console.log('client DELETE  FAIL');
+        }); 
+
+
+      };
 
 
   })

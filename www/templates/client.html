@@ -14,9 +14,10 @@
       <ion-item ng-repeat="client in clients" id="{{client.id}} " ng-click="editClient({{client.id}})" can-swipe="true">
         
         {{client.tradeName}}
-        <ion-option-button class="button-light icon ion-heart"></ion-option-button>
-        <ion-option-button class="button-light icon ion-email"></ion-option-button>
-        <ion-option-button ng-click="deleteClient()" class="button-assertive icon ion-trash-a"></ion-option-button>
+        
+        <ion-option-button class="button-positive icon ion-heart"></ion-option-button>
+        <ion-option-button class="button-dark icon ion-email"></ion-option-button>
+        <ion-option-button ng-click="deleteClient({{client.id}}, {{$index}})" class="button-assertive icon ion-trash-a"></ion-option-button>
         
       </ion-item>
     </ion-list>

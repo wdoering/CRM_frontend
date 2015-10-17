@@ -46,13 +46,10 @@ angular.module('CRM.controllers', [])
   var urlBase = "http://localhost:8080/client";
   return{
     all: function(){
-      return [
-      { name: 'Cliente 1', id: 1 },
-      { name: 'Cliente 2', id: 2 },
-      { name: 'Cliente 3', id: 3 },
-      { name: 'Cliente 4', id: 4 },
-      { name: 'Cliente 5', id: 5 }
-      ];
+      return [{"id":3,"cnpj":123111111,"tradeName":"STATIC Fantasy Company","legalName":"Fantasia LTDA.","stateRegistrationNumber":"123456","primaryContactName":"Swagner","street":"uno st.","addressNumber":"111","neighborhood":"vila sapo","city":"sao hell","stateID":1,"postalCode":"1283123","email":"wagnerdoering@trololo.com"},
+              {"id":24,"cnpj":5,"tradeName":"5STATIC","legalName":"5","stateRegistrationNumber":"5","primaryContactName":"5","street":"55","addressNumber":"5","neighborhood":"5","city":"5","stateID":5,"postalCode":"5","email":"5"},
+              {"id":25,"cnpj":7,"tradeName":"STATIC7","legalName":"7","stateRegistrationNumber":"7","primaryContactName":"7","street":"7","addressNumber":"7","neighborhood":"7","city":"7","stateID":7,"postalCode":"7","email":"7"},
+              {"id":26,"cnpj":8,"tradeName":"STATIC8","legalName":"8","stateRegistrationNumber":"8","primaryContactName":"8","street":"8","addressNumber":"8","neighborhood":"8","city":"8","stateID":8,"postalCode":"8","email":"8"}];
     },
     getClients: function(){
       return $http.get(urlBase);
@@ -94,7 +91,12 @@ angular.module('CRM.controllers', [])
     $scope.clients = clients;
 
   });
-  
+  //this is only so I can see the list working offline
+  if(typeof $scope.clients === 'undefined'){
+    $scope.clients  = ClientFactory.all();
+  }
+
+
   //abre modal de novo cliente
   $scope.newClient = function(){ 
    console.log('newClient chamada!!');      

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('CRM.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -56,6 +56,23 @@ angular.module('starter.controllers', [])
     },
     getClients: function(){
       return $http.get(urlBase);
+    },
+    submitNewClient : function(clientData){
+      return $http.post(urlBase, clientData);
+    },
+    deleteClient : function(clientId){
+      //return true;
+      return $http.delete(urlBase + "?id=" + clientId); // ajeitar essa gambiarra da querystring
+    },
+    fetchIndex : function (objList,clientId) {
+      var indexofObject = -1;
+      angular.forEach(objList, function(client) {
+           if(clientId === client.id){
+              console.log(objList.indexOf(client));
+              indexofObject = objList.indexOf(client);
+           }
+      });
+      return indexofObject;
     }
   }
 
@@ -81,7 +98,7 @@ angular.module('starter.controllers', [])
   //abre modal de novo cliente
   $scope.newClient = function(){ 
    console.log('newClient chamada!!');      
-   $scope.clientData = {};
+   $scope.client = {};
 
       // Create the login modal that we will use later
       $ionicModal.fromTemplateUrl('templates/client-add.html', {
@@ -98,14 +115,15 @@ angular.module('starter.controllers', [])
 
       // salva novo cliente via POST
       $scope.clientAddSave = function() {
-        console.log('Saving client', $scope.clientData);
-        var data = $scope.clientData;
+        console.log('Saving client', $scope.client);
+        var data = $scope.client;
         var urlBase = "http://localhost:8080/client";
-        var res = $http.post(urlBase, data);
+        //var res = $http.post(urlBase, data);
+        var res = ClientFactory.submitNewClient(data);
         res.success(function(data, status, headers, config) {
           console.log('client POST SUCCESS');
-          $scope.clientData.id = data;
-          $scope.clients.push($scope.clientData);
+          $scope.client.id = data;
+          $scope.clients.push($scope.client);
           $scope.closeClientAdd();
 
         });
@@ -123,7 +141,8 @@ angular.module('starter.controllers', [])
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
-        $scope.clientData = $scope.clients[clientId - 1]; //refactor this in case this list becomes reordable
+        var indexOfClient = ClientFactory.fetchIndex($scope.clients, clientId);
+        $scope.client = $scope.clients[indexOfClient]; //refactor this in case this list becomes reordable
         $scope.modal.show();
       });
 
@@ -133,8 +152,8 @@ angular.module('starter.controllers', [])
 
         // salva novo cliente via POST
       $scope.clientEditSave = function() {
-        console.log('Saving Edit client', $scope.clientData);
-        var client = $scope.clientData;
+        console.log('Saving Edit client', $scope.client);
+        var client = $scope.client;
         var urlBase = "http://localhost:8080/client";
         var res = $http.put(urlBase, client);
         res.success(function(data, status, headers, config) {
@@ -148,21 +167,21 @@ angular.module('starter.controllers', [])
 
       };
 
-
-
     };
 
 
-      $scope.deleteClient = function(clientId, itemIndex){
+      $scope.deleteClient = function(clientId){
         console.log("delete este cliente");
         
         var urlBase = "http://localhost:8080/client";
-        var data = {id: clientId};
-        var res = $http.delete(urlBase + "?id=" + clientId);
+        var index = ClientFactory.fetchIndex($scope.clients, clientId);
+        var res = ClientFactory.deleteClient(clientId);
+        //var index = $scope.clients.indexOf(client);
+
         res.success(function(data, status, headers, config) {
           console.log('client DELETE  SUCCESS' + data);
-          $scope.clients.splice(itemIndex, 1);
-
+          if(data === true)
+            $scope.clients.splice(index, 1);
         });
         res.error(function(data, status, headers, config) {
           console.log('client DELETE  FAIL');

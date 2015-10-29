@@ -42,51 +42,37 @@ angular.module('CRM', ['ionic', 'CRM.controllers'])
       }
     }
   })
-
-  .state('app.search', {
-    url: '/search',
+    
+  .state('app.map', {
+    url: '/map',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/map.html',
+        controller: 'MapCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-    .state('app.map', {
-      url: '/map',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
-        }
-      }
-    })
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+  // Aqui jaz um jeito diferente do meu de fazer CRUD master detail e tals... usando url / ID inves de queystring
+  //   .state('app.playlists', {
+  //     url: '/playlists',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/playlists.html',
+  //         controller: 'PlaylistsCtrl'
+  //       }
+  //     }
+  //   })
+
+  // .state('app.single', {
+  //   url: '/playlists/:playlistId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/playlist.html',
+  //       controller: 'PlaylistCtrl'
+  //     }
+  //   }
+  // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/client');
 });

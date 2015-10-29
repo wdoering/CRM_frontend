@@ -2,9 +2,9 @@
 <widget id="com.ionicframework.crm334307" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>CRM</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An Ionic Framework and Cordova CRM designed in Brazil.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
+  <author email="wdoering@gmail.com" href="http://stackoverflow.com/users/1069763/wdoering">
       Ionic Framework Team
     </author>
   <content src="index.html"/>
@@ -17,4 +17,14 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+<!-- 
+<platform name="android">
+
+  <icon src="icons/android/CRM-64.png" width="60" height="60" />
+  <icon src="icons/android/CRM-64.png" width="120" height="120" />
+
+</platform> -->
+
+
 </widget>
+

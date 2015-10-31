@@ -37,7 +37,7 @@ angular.module('CRM', ['ionic', 'CRM.controllers'])
     url: '/client',
     views: {
       'menuContent': {
-        templateUrl: 'templates/client.html',
+        templateUrl: 'Components/Client/Views/client.html',
         controller: 'ClientCtrl'
       }
     }

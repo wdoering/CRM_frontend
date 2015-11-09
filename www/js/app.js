@@ -37,7 +37,7 @@ angular.module('CRM', ['ionic', 'CRM.controllers'])
     url: '/client',
     views: {
       'menuContent': {
-        templateUrl: 'Components/Client/Views/client.html',
+        templateUrl: 'components/client/views/client.html',
         controller: 'ClientCtrl'
       }
     }
@@ -74,5 +74,5 @@ angular.module('CRM', ['ionic', 'CRM.controllers'])
   //   }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/client');
+  $urlRouterProvider.otherwise('/app/map');
 });

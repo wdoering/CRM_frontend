@@ -7,16 +7,19 @@ angular.module('CRM').service('ClientService', function($http){
                 {"id":25,"cnpj":7,"tradeName":"STATIC7","legalName":"7","stateRegistrationNumber":"7","primaryContactName":"7","street":"7","addressNumber":"7","neighborhood":"7","city":"7","stateID":7,"postalCode":"7","email":"7"},
                 {"id":26,"cnpj":8,"tradeName":"STATIC8","legalName":"8","stateRegistrationNumber":"8","primaryContactName":"8","street":"8","addressNumber":"8","neighborhood":"8","city":"8","stateID":8,"postalCode":"8","email":"8"}];
       },
+      
       getClients: function(){
         return $http.get(urlBase);
       },
+
       submitNewClient : function(clientData){
         return $http.post(urlBase, clientData);
       },
+
       deleteClient : function(clientId){
-        //return true;
         return $http.delete(urlBase + "?id=" + clientId); // ajeitar essa gambiarra da querystring
       },
+
       fetchIndex : function (objList,clientId) {
         var indexofObject = -1;
         angular.forEach(objList, function(client) {
@@ -27,6 +30,8 @@ angular.module('CRM').service('ClientService', function($http){
         });
         return indexofObject;
       }
+
+
   }
 
 })

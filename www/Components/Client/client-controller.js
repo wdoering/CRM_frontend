@@ -2,6 +2,7 @@
 
 angular.module('CRM.controllers').controller('ClientCtrl', function(ClientService, $scope, $http, $timeout, $ionicModal) {
   
+  console.log("inicio da clientController");
   //essa funcao busca a lista
   ClientService.getClients().then(function(response){
 
@@ -24,7 +25,7 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
    $scope.client = {};
 
       // Create the login modal that we will use later
-      $ionicModal.fromTemplateUrl('Components/Client/Views/client-add.html', {
+      $ionicModal.fromTemplateUrl('components/client/views/client-add.html', {
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
@@ -40,8 +41,6 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
       $scope.clientAddSave = function() {
         console.log('Saving client', $scope.client);
         var data = $scope.client;
-        var urlBase = "http://localhost:8080/client";
-        //var res = $http.post(urlBase, data);
         var res = ClientService.submitNewClient(data);
         res.success(function(data, status, headers, config) {
           console.log('client POST SUCCESS');
@@ -60,12 +59,12 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
    
   $scope.editClient = function(clientId){
     
-     $ionicModal.fromTemplateUrl('Components/Client/Views/client-edit.html', {
+     $ionicModal.fromTemplateUrl('components/client/views/client-edit.html', {
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
         var indexOfClient = ClientService.fetchIndex($scope.clients, clientId);
-        $scope.client = $scope.clients[indexOfClient]; //refactor this in case this list becomes reordable
+        $scope.client = $scope.clients[indexOfClient]; 
         $scope.modal.show();
       });
 
@@ -99,7 +98,6 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
         var urlBase = "http://localhost:8080/client";
         var index = ClientService.fetchIndex($scope.clients, clientId);
         var res = ClientService.deleteClient(clientId);
-        //var index = $scope.clients.indexOf(client);
 
         res.success(function(data, status, headers, config) {
           console.log('client DELETE  SUCCESS' + data);

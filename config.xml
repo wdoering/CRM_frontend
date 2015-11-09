@@ -17,14 +17,5 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-<!-- 
-<platform name="android">
-
-  <icon src="icons/android/CRM-64.png" width="60" height="60" />
-  <icon src="icons/android/CRM-64.png" width="120" height="120" />
-
-</platform> -->
-
-
+  <!-- <allow-navigation href="file://*/*"/> -->
 </widget>
-

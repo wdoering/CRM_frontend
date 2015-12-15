@@ -1,7 +1,8 @@
 //aqui começa conteudo relacionado a cadastro de cliente
 
-angular.module('CRM.controllers').controller('ClientCtrl', function(ClientService, $scope, $http, $timeout, $ionicModal) {
+angular.module('CRM.controllers').controller('ClientCtrl', function(ClientService,LocationService, $scope, $http, $timeout, $ionicModal) {
   
+ 
   console.log("inicio da clientController");
   //essa funcao busca a lista
   ClientService.getClients().then(function(response){
@@ -28,6 +29,7 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
       $ionicModal.fromTemplateUrl('components/client/views/client-add.html', {
         scope: $scope
       }).then(function(modal) {
+        $scope.states = LocationService.statesBR();
         $scope.modal = modal;
         $scope.modal.show();
       });
@@ -63,6 +65,7 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
         scope: $scope
       }).then(function(modal) {
         $scope.modal = modal;
+        $scope.states = LocationService.statesBR();
         var indexOfClient = ClientService.fetchIndex($scope.clients, clientId);
         $scope.client = $scope.clients[indexOfClient]; 
         $scope.modal.show();

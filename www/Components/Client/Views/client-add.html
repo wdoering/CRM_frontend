@@ -47,9 +47,13 @@
           <span class="input-label">Cidade</span>
           <input type="text" ng-model="client.city">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Estado</span>
-          <input type="text" ng-model="client.stateID">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Estado
+          </div>
+          <select name="singleSelect" id="singleSelect" ng-model="client.stateID">
+            <option ng-repeat="state in states" value="{{state.id}}">{{state.shortName}}</option>
+          </select>
         </label>
         <label class="item item-input">
           <span class="input-label">CEP</span>

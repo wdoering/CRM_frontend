@@ -17,7 +17,7 @@ angular.module('CRM').service('ClientService', function($http){
       },
 
       deleteClient : function(clientId){
-        return $http.delete(urlBase + "?id=" + clientId); // ajeitar essa gambiarra da querystring
+        return $http.delete(urlBase + "?id=" + clientId); 
       },
 
       fetchIndex : function (objList,clientId) {

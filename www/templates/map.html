@@ -10,12 +10,24 @@
     <title></title>
     
   </head>
-  <body ng-controller="MapCtrl">
+  <body ng-controller="MapCtrl as vm">
     <ion-header-bar class="bar-dark" >
       <h1 class="title">Map</h1>
     </ion-header-bar>
     <ion-content>
-      <div id="map" data-tap-disabled="true"></div>
+    
+        <ng-map zoom="8" center="[-29.79, -51.15]" style="height: 100%;">
+          <div>
+            <custom-marker position="[{{p[0]}}, {{p[1]}}]" ng-repeat="p in vm.positions">
+              <div class="cm">
+                position:<br>
+                {{p[0]}}<br>
+                {{p[1]}}
+              </div>
+            </custom-marker>
+          </div>
+        </ng-map>
+            
     </ion-content>
     <ion-footer-bar class="bar-dark">
       <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
@@ -24,3 +36,19 @@
 
   </ion-content>
 </ion-view>
+
+<!--
+
+<body ng-controller="mapController as vm">
+  <h1>Marker Cluster</h1>
+  <hr />
+  <ng-map zoom="8" center="[40.74, -74.18]">
+    <custom-marker position="[{{p[0]}}, {{p[1]}}]" ng-repeat="p in vm.positions">
+      <div class="cm">
+        position:<br>
+        {{p[0]}}<br>
+        {{p[1]}}
+      </div>
+    </custom-marker>
+  </ng-map>
+</body>-->

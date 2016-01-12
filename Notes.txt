@@ -1,0 +1,35 @@
+After updating Ionic CLI:
+******************************************************
+ Dependency warning - for the CLI to run correctly,      
+ it is highly suggested to install/upgrade the following:     
+
+ Install ios-deploy to deploy iOS applications to devices. `npm install -g ios-deploy` (may require sudo)
+
+******************************************************
+
+ionic $ sudo npm install -g ios-deploy
+
+ERROR:
+
+sh: line 1: 41237 Abort trap: 6           xcodebuild
+npm ERR! Darwin 15.2.0
+npm ERR! argv "node" "/usr/local/bin/npm" "install" "-g" "ios-deploy"
+npm ERR! node v0.12.2
+npm ERR! npm  v2.7.4
+npm ERR! code ELIFECYCLE
+
+npm ERR! ios-deploy@1.8.3 preinstall: `./src/check_reqs.js && xcodebuild`
+npm ERR! Exit status 134
+npm ERR! 
+npm ERR! Failed at the ios-deploy@1.8.3 preinstall script './src/check_reqs.js && xcodebuild'.
+npm ERR! This is most likely a problem with the ios-deploy package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     ./src/check_reqs.js && xcodebuild
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls ios-deploy
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /Users/wdoering/ionic/ionicWorkspace/CRM/npm-debug.log
+

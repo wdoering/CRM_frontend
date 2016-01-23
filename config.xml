@@ -9,6 +9,8 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.1.0" />
+  <allow-navigation href="*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -17,5 +19,6 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-  <!-- <allow-navigation href="file://*/*"/> -->
+  <!--<allow-navigation href="file://*/*"/>-->
+  <allow-navigation href="*"/>
 </widget>

@@ -6,6 +6,10 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
 
+//bloco de variaveis de ambiente
+ .constant('SERVER_URL','http://localhost:8080')
+
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

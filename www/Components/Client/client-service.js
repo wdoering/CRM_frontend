@@ -1,5 +1,5 @@
-angular.module('CRM').service('ClientService', function($http){
-  var urlBase = "http://localhost:8080/client";
+angular.module('CRM').service('ClientService', function($http, SERVER_URL){
+  var urlClient = "/client";
   return {
       all: function(){
         return [{"id":3,"cnpj":123111111,"tradeName":"STATIC Fantasy Company","legalName":"Fantasia LTDA.","stateRegistrationNumber":"123456","primaryContactName":"Swagner","street":"uno st.","addressNumber":"111","neighborhood":"vila sapo","city":"sao hell","stateID":1,"postalCode":"1283123","email":"wagnerdoering@trololo.com"},
@@ -9,15 +9,16 @@ angular.module('CRM').service('ClientService', function($http){
       },
       
       getClients: function(){
-        return $http.get(urlBase);
+          console.log(SERVER_URL);
+        return $http.get(SERVER_URL + urlClient);
       },
 
       submitNewClient : function(clientData){
-        return $http.post(urlBase, clientData);
+        return $http.post(SERVER_URL + urlClient, clientData);
       },
 
       deleteClient : function(clientId){
-        return $http.delete(urlBase + "?id=" + clientId); 
+        return $http.delete(SERVER_URL + urlClient + "?id=" + clientId); 
       },
 
       fetchIndex : function (objList,clientId) {

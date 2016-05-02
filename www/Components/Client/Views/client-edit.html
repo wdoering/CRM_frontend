@@ -49,12 +49,18 @@
           <input type="text" ng-model="client.city">
         </label>
         <label class="item item-input item-select">
+            <!--//o dilema do default value do dropdown de estados-->
           <div class="input-label">
             Estado
           </div>
-          <select name="singleSelect" id="singleSelect" ng-model="client.stateID">
+          <!--segunda tentativa achado na documentacao da google-->
+          <select ng-options="state as state.longName for state in states track by state.id" ng-model="selected"></select>
+          
+          <!--//implementação original-->
+          <!--<select name="singleSelect" id="singleSelect" ng-model="client.stateID">
             <option ng-repeat="state in states" value="{{state.id}}">{{state.shortName}}</option>
-          </select>
+          </select>-->
+          
         </label>
         <label class="item item-input">
           <span class="input-label">CEP</span>

@@ -2,9 +2,7 @@
 
 angular.module('CRM.controllers').controller('ClientCtrl', function(ClientService,LocationService, $scope, $http, $timeout, $ionicModal) {
   
- 
-  console.log("inicio da clientController");
-  //essa funcao busca a lista
+  
   ClientService.getClients().then(function(response){
 
     var clients = response.data;
@@ -13,19 +11,14 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
 
   });
 
-
   //this is only so I can see the list working offline
   if(typeof $scope.clients === 'undefined'){
     $scope.clients  = ClientService.all();
   }
 
-
   //abre modal de novo cliente
   $scope.newClient = function(){ 
-   console.log('newClient chamada!!');      
-   $scope.client = {};
-
-      // Create the login modal that we will use later
+      $scope.client = {};
       $ionicModal.fromTemplateUrl('components/client/views/client-add.html', {
         scope: $scope
       }).then(function(modal) {
@@ -68,6 +61,7 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
         $scope.states = LocationService.statesBR();
         var indexOfClient = ClientService.fetchIndex($scope.clients, clientId);
         $scope.client = $scope.clients[indexOfClient]; 
+        $scope.selected = $scope.states[$scope.client.stateID -1];
         $scope.modal.show();
       });
 
@@ -79,13 +73,20 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
       $scope.clientEditSave = function() {
         console.log('Saving Edit client', $scope.client);
         var client = $scope.client;
-        var urlBase = "http://localhost:8080/client";
-        var res = $http.put(urlBase, client);
+        //gambiarra das forte ate conseguir fazer via configuracao
+        // objetivo eh fazer com que o seletor de estados consista com o model
+        client.stateID = this.selected.id;
+        var res = ClientService.submitEditClient(client);
+
         res.success(function(data, status, headers, config) {
           console.log('client PUT SUCCESS');
+          
           $scope.closeClientEdit();
 
         });
+        var indexOfClient = ClientService.fetchIndex($scope.clients, clientId)
+          $scope.clients[indexOfClient] = $scope.client; 
+        
         res.error(function(data, status, headers, config) {
           console.log('client PUT FAIL');
         }); 
@@ -94,11 +95,9 @@ angular.module('CRM.controllers').controller('ClientCtrl', function(ClientServic
 
     };
 
-
       $scope.deleteClient = function(clientId){
         console.log("delete este cliente");
         
-        var urlBase = "http://localhost:8080/client";
         var index = ClientService.fetchIndex($scope.clients, clientId);
         var res = ClientService.deleteClient(clientId);
 

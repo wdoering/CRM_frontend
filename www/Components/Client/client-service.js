@@ -20,7 +20,10 @@ angular.module('CRM').service('ClientService', function($http, SERVER_URL){
       deleteClient : function(clientId){
         return $http.delete(SERVER_URL + urlClient + "?id=" + clientId); 
       },
-
+      submitEditClient : function(client){
+        return $http.put(SERVER_URL + urlClient, client);
+      }, 
+      
       fetchIndex : function (objList,clientId) {
         var indexofObject = -1;
         angular.forEach(objList, function(client) {

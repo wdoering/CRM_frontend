@@ -1,0 +1,28 @@
+<ion-view view-title="product">
+  <ion-content>
+    <h1>product management</h1>
+    <ion-header-bar class="bar-dark">
+
+    <div class="buttons">
+      <button class="button button-icon ion-plus" ng-click="newProduct()"></button>
+    </div>
+
+  </ion-header-bar>
+
+
+    <ion-list>
+      <ion-item ng-repeat="product in products" ng-click="editproduct({{product.id}})" can-swipe="true" class="item-thumbnail-left">
+        <img src="img/wHFhXAf4Sp5vLo2FffUe_profile.JPG">
+                <h2>{{product.description}}</h2>
+                <p>{{product.manufacturer.name}}</p>
+        
+
+        <ion-option-button class="button-positive icon ion-heart"></ion-option-button>
+        <ion-option-button class="button-dark icon ion-email"></ion-option-button>
+        <ion-option-button ng-click="deleteproduct({{product.id}})" class="button-assertive icon ion-trash-a"></ion-option-button>
+        
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

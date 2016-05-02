@@ -1,0 +1,38 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Edit Product</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeProductEdit()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="productSave()">
+      <div class="list">
+
+        <label class="item item-input">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Product's description</span>
+          <input type="text" ng-model="product.description">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Sizing category</span>
+          <input type="text" ng-model="product.productSizeCategory.description">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Manufacturer</span>
+          <input type="text" ng-model="product.manufacturer.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Product's type</span>
+          <input type="text" ng-model="product.typeId">
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Salvar</button>
+        </label>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -47,6 +47,17 @@ angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
     }
   })
     
+  
+  .state('app.product', {
+    url: '/product',
+    views: {
+      'menuContent': {
+        templateUrl: 'components/product/views/product.html',
+        controller: 'ProductCtrl'
+      }
+    }
+  })
+    
   .state('app.map', {
     url: '/map',
     views: {
@@ -78,5 +89,5 @@ angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
   //   }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/map');
+  $urlRouterProvider.otherwise('/app/product');
 });

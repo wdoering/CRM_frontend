@@ -21,7 +21,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Manufacturer</span>
-          <input type="text" ng-model="product.manufacturer.name">
+          <select ng-options="manufacturer as manufacturer.name for manufacturer in manufacturers track by manufacturer.id" ng-model="product.manufacturer"></select>
         </label>
         <label class="item item-input">
           <span class="input-label">Product's type</span>

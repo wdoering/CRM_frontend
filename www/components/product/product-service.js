@@ -19,7 +19,8 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL){
       },
       submitEditProduct : function(product){
         return $http.put(SERVER_URL + urlProduct, product);
-      }, 
+      },
+       
       //this function should be moved to a generic class file...
       fetchIndex : function (objList,productId) {
         var indexofObject = -1;
@@ -32,6 +33,11 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL){
              
         });
         return indexofObject;
+      },
+      
+      getManufacturers: function(){
+        return $http.get(SERVER_URL + "/manufacturer");
+          
       }
 
 

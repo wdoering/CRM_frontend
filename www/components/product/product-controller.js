@@ -1,6 +1,6 @@
 angular.module('CRM.controllers').controller('ProductCtrl', function(ProductService, $scope, $http, $timeout, $ionicModal) {
   
-  
+  //context startup
   ProductService.getProducts().then(function(response){
 
     var products = response.data;
@@ -8,6 +8,18 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
     $scope.products = products;
 
   });
+
+  ProductService.getManufacturers().then(function(response){
+
+    var manufacturers = response.data;
+    console.log(response.data);
+    $scope.manufacturers = manufacturers;
+
+  });
+  
+  
+  //end context startup
+  
 
   //this is only so I can see the list working offline
   if(typeof $scope.products === 'undefined'){
@@ -21,7 +33,7 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
         scope: $scope
       }).then(function(modal) {
         
-        $scope.modal = modal;
+        $scope.modal = modal; 
         $scope.modal.show();
       });
       
@@ -58,7 +70,7 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
         var indexOfProduct = ProductService.fetchIndex($scope.products, productId);
         $scope.product = $scope.products[indexOfProduct]; 
         $scope.modal.show();
-        
+        $scope.selected = $scope.product.manufacturer.id;
         
         $scope.modal.show();
       });

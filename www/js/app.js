@@ -8,6 +8,9 @@ angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
 
 //bloco de variaveis de ambiente
  .constant('SERVER_URL','http://localhost:8080')
+ .constant('CLIENT_CTRL','/client')
+ .constant('PRODUCT_CTRL','/product')
+ .constant('MANUFACTURER_CTRL','/manufacturer')
 
 
 .run(function($ionicPlatform) {

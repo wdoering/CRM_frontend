@@ -18,9 +18,41 @@
 -- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
 -- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
 
+
+
+-- Enquanto nao houver alteracao de colunas na CLIENT vou fazendo pela BKP dela mesma
+INSERT INTO CLIENT(
+	`CLIENT`.`ID`,
+    `CLIENT`.`ADDRESSNUMBER`,
+    `CLIENT`.`CITY`,
+    `CLIENT`.`CNPJ`,
+    `CLIENT`.`EMAIL`,
+    `CLIENT`.`LEGALNAME`,
+    `CLIENT`.`NEIGHBORHOOD`,
+    `CLIENT`.`POSTALCODE`,
+    `CLIENT`.`PRIMARYCONTACTNAME`,
+    `CLIENT`.`STATEID`,
+    `CLIENT`.`STATEREGISTRATIONNUMBER`,
+    `CLIENT`.`STREET`,
+    `CLIENT`.`TRADENAME`)
+    
+SELECT `CLIENT_bkp`.`ID`,
+    `CLIENT_bkp`.`ADDRESSNUMBER`,
+    `CLIENT_bkp`.`CITY`,
+    `CLIENT_bkp`.`CNPJ`,
+    `CLIENT_bkp`.`EMAIL`,
+    `CLIENT_bkp`.`LEGALNAME`,
+    `CLIENT_bkp`.`NEIGHBORHOOD`,
+    `CLIENT_bkp`.`POSTALCODE`,
+    `CLIENT_bkp`.`PRIMARYCONTACTNAME`,
+    `CLIENT_bkp`.`STATEID`,
+    `CLIENT_bkp`.`STATEREGISTRATIONNUMBER`,
+    `CLIENT_bkp`.`STREET`,
+    `CLIENT_bkp`.`TRADENAME`
+FROM `CRM_DB`.`CLIENT_bkp`
+
+
 -- CRM_DB.PRODUCTSIZECATEGORY 
-
-
 insert into CRM_DB.PRODUCTSIZECATEGORY values(1,'Botas masculinas');
 insert into CRM_DB.PRODUCTSIZECATEGORY values(2,'Botas femininas');                 
 insert into CRM_DB.PRODUCTSIZECATEGORY values(3,'Camisas masculinas');
@@ -94,14 +126,15 @@ insert into CRM_DB.PRODUCT values(9,'Alpargatas de couro', 1, 2, 1);
 insert into CRM_DB.PRODUCT values(10,'Alpargatas de couro', 1, 2, 1);
 insert into CRM_DB.PRODUCT values(11,'Alpargatas de couro', 1, 2, 1);
 
-insert into CRM_DB.PRODUCT values(12,'bota de couro', 1, 1, 1);
-insert into CRM_DB.PRODUCT values(13,'camisa de algodão', 1, 1, 1);
-insert into CRM_DB.PRODUCT values(14,'camisa de algodão', 1, 1, 1);
-insert into CRM_DB.PRODUCT values(15,'camisa de algodão', 1, 1, 1);
-insert into CRM_DB.PRODUCT values(16,'camisa de algodão', 1, 1, 1);
-insert into CRM_DB.PRODUCT values(17,'camisa de algodão', 1, 1, 1);
+insert into CRM_DB.PRODUCT values(13,'camisa de algodão', 1, 1, 2);
+insert into CRM_DB.PRODUCT values(14,'camisa de algodão', 1, 1, 2);
+insert into CRM_DB.PRODUCT values(15,'camisa de algodão', 1, 1, 2);
+insert into CRM_DB.PRODUCT values(16,'camisa de algodão', 1, 1, 2);
+insert into CRM_DB.PRODUCT values(17,'camisa de algodão', 1, 1, 2);
 
 
+
+select * from CRM_DB.producttype
 
 
 

@@ -19,10 +19,22 @@
           <span class="input-label">Sizing category</span>
           <input type="text" ng-model="product.productSizeCategory.description">
         </label>
+        
         <label class="item item-input">
           <span class="input-label">Manufacturer</span>
           <select ng-options="manufacturer as manufacturer.name for manufacturer in manufacturers track by manufacturer.id" ng-model="product.manufacturer"></select>
         </label>
+        
+        <!--  test this after 
+            - creating the productType controller 
+            - creating method that retrieves the list of productTypes from the item above
+        -->
+        <label class="item item-input">
+          <span class="input-label">Product Type</span>
+          <select ng-options="productType as productType.description for productType in productTypes track by productType.id" ng-model="product.productType"></select>
+        </label>
+        
+        
         <label class="item item-input">
           <span class="input-label">Product's type</span>
           <input type="text" ng-model="product.typeId">

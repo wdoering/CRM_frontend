@@ -18,6 +18,15 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
   });
   
   
+  ProductService.getProductTypes().then(function(response){
+
+    var productTypes = response.data;
+    console.log(response.data);
+    $scope.productTypes = productTypes;
+
+  });
+  
+  
   //end context startup
   
 

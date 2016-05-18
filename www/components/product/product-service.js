@@ -1,4 +1,4 @@
-angular.module('CRM').service('ProductService', function($http, SERVER_URL){
+angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANUFACTURER_CTRL, PRODUCT_TYPE_CTRL){
   var urlProduct = "/product";
   return {
       all: function(){
@@ -36,8 +36,13 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL){
       },
       
       getManufacturers: function(){
-        return $http.get(SERVER_URL + "/manufacturer");
+        return $http.get(SERVER_URL + MANUFACTURER_CTRL);
           
+      },
+      getProductTypes: function(){
+        return $http.get(SERVER_URL + PRODUCT_TYPE_CTRL);
+        
+        
       }
 
 

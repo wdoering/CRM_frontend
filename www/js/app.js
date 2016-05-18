@@ -10,6 +10,7 @@ angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
  .constant('SERVER_URL','http://localhost:8080')
  .constant('CLIENT_CTRL','/client')
  .constant('PRODUCT_CTRL','/product')
+ .constant('PRODUCT_TYPE_CTRL','/producttype')
  .constant('MANUFACTURER_CTRL','/manufacturer')
 
 

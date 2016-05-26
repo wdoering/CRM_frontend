@@ -1,12 +1,10 @@
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'CRM' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
+// 'CRM.controllers' is found in controllers.js
 angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
 
-//bloco de variaveis de ambiente
+// TODO: Consider moving this to an independent file
  .constant('SERVER_URL','http://localhost:8080')
  .constant('CLIENT_CTRL','/client')
  .constant('PRODUCT_CTRL','/product')

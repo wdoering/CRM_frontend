@@ -1,4 +1,4 @@
-angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANUFACTURER_CTRL, PRODUCT_TYPE_CTRL){
+angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANUFACTURER_CTRL, PRODUCT_CTRL, PRODUCT_TYPE_CTRL, PRODUCT_SIZE_CATEGORY_CTRL){
   var urlProduct = "/product";
   return {
       all: function(){
@@ -7,18 +7,18 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANU
       
       getProducts: function(){
           console.log(SERVER_URL);
-        return $http.get(SERVER_URL + urlProduct);
+        return $http.get(SERVER_URL + PRODUCT_CTRL);
       },
 
       submitNewProduct : function(productData){
-        return $http.post(SERVER_URL + urlProduct, productData);
+        return $http.post(SERVER_URL + PRODUCT_CTRL, productData);
       },
 
       deleteProduct : function(productId){
-        return $http.delete(SERVER_URL + urlProduct + "?id=" + productId); 
+        return $http.delete(SERVER_URL + PRODUCT_CTRL + "?id=" + productId); 
       },
       submitEditProduct : function(product){
-        return $http.put(SERVER_URL + urlProduct, product);
+        return $http.put(SERVER_URL + PRODUCT_CTRL, product);
       },
        
       //this function should be moved to a generic class file...
@@ -37,12 +37,12 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANU
       
       getManufacturers: function(){
         return $http.get(SERVER_URL + MANUFACTURER_CTRL);
-          
       },
       getProductTypes: function(){
         return $http.get(SERVER_URL + PRODUCT_TYPE_CTRL);
-        
-        
+      },
+      getProductSizeCategories: function(){
+        return $http.get(SERVER_URL + PRODUCT_SIZE_CATEGORY_CTRL);
       }
 
 

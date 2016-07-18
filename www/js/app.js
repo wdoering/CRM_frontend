@@ -10,7 +10,8 @@ angular.module('CRM', ['ionic', 'CRM.controllers','ngMap'])
  .constant('PRODUCT_CTRL','/product')
  .constant('PRODUCT_TYPE_CTRL','/producttype')
  .constant('MANUFACTURER_CTRL','/manufacturer')
-
+ .constant('PRODUCT_SIZE_CATEGORY_CTRL','/productsizecategory')
+ 
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

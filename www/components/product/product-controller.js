@@ -17,7 +17,6 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
 
   });
   
-  
   ProductService.getProductTypes().then(function(response){
 
     var productTypes = response.data;
@@ -25,11 +24,17 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
     $scope.productTypes = productTypes;
 
   });
-  
-  
+
+  ProductService.getProductSizeCategories().then(function(response){
+
+    var productSizeCategories = response.data;
+    console.log(response.data);
+    $scope.productSizeCategories = productSizeCategories;
+
+  });
+
   //end context startup
   
-
   //this is only so I can see the list working offline
   if(typeof $scope.products === 'undefined'){
     $scope.products  = ProductService.all();
@@ -46,30 +51,13 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
         $scope.modal.show();
       });
       
-      $scope.closeProductEdit = function() {
+      $scope.closeProductAdd = function() {
         $scope.modal.hide();
       };
 
-      // salva novo produto via POST
-      $scope.productSave = function() {
-        console.log('Saving product', $scope.product);
-        var data = $scope.product;
-        var res = ProductService.submitnewProduct(data);
-        res.success(function(data, status, headers, config) {
-          console.log('product POST SUCCESS');
-          $scope.product.id = data;
-          $scope.products.push($scope.product);
-          $scope.closeProductAdd();
-
-        });
-        res.error(function(data, status, headers, config) {
-          console.log('product POST FAIL');
-        }); 
-
-      };
-
     };
-   
+    
+
   $scope.editproduct = function(productId){
     
      $ionicModal.fromTemplateUrl('components/product/views/product-edit.html', {
@@ -79,9 +67,6 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
         var indexOfProduct = ProductService.fetchIndex($scope.products, productId);
         $scope.product = $scope.products[indexOfProduct]; 
         $scope.modal.show();
-        $scope.selected = $scope.product.manufacturer.id;
-        
-        $scope.modal.show();
       });
 
       $scope.closeProductEdit = function() {
@@ -89,29 +74,62 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
       };
 
         // salva novo produto via POST
-      $scope.productEditSave = function() {
-        console.log('Saving Edit product', $scope.product);
-        
-        var res = ProductService.submitEditProduct(product);
+      // $scope.productEditSave = function() {
+      //   console.log('Saving Edit product', $scope.product);
+      //   debugger;
+      //   var res = ProductService.submitEditProduct(product);
 
-        res.success(function(data, status, headers, config) {
-          console.log('product PUT SUCCESS');
+      //   res.success(function(data, status, headers, config) {
+      //     console.log('product PUT SUCCESS');
           
-          $scope.closeProductEdit();
+      //     $scope.closeProductEdit();
 
-        });
-        var indexOfProduct = ProductService.fetchIndex($scope.products, productId)
-          $scope.products[indexOfProduct] = $scope.product; 
+      //   });
+      //   var indexOfProduct = ProductService.fetchIndex($scope.products, productId)
+      //     $scope.products[indexOfProduct] = $scope.product; 
         
-        res.error(function(data, status, headers, config) {
-          console.log('product PUT FAIL');
-        }); 
+      //   res.error(function(data, status, headers, config) {
+      //     console.log('product PUT FAIL');
+      //   }); 
 
-      };
+      // };
 
     };
 
-      $scope.deleteProduct = function(productId){
+
+
+      // salva novo produto via POST
+      $scope.productSave = function() {
+        console.log('Saving product', $scope.product);
+        var data = $scope.product;
+
+        var res;
+        if(data.id) {
+          var res = ProductService.submitEditProduct(data);
+        }else {
+          res = ProductService.submitNewProduct(data);
+        }
+         
+        res.success(function(data, status, headers, config) {
+          console.log('product Save SUCCESS');
+          $scope.product.id = data;
+          $scope.products.push($scope.product);
+          $scope.closeProductAdd();
+
+        });
+        res.error(function(data, status, headers, config) {
+          console.log('product POST FAIL');
+        });
+
+      $scope.closeProductAdd = function() {
+        $scope.modal.hide();
+      };
+
+
+      };
+   
+
+    $scope.deleteProduct = function(productId){
         console.log("delete este produto");
         
         var index = ProductService.fetchIndex($scope.products, productId);
@@ -126,8 +144,6 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
           console.log('product DELETE  FAIL');
         }); 
 
-
-      };
-
+    };
 
   })

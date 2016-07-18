@@ -15,11 +15,12 @@
           <span class="input-label">Product's description</span>
           <input type="text" ng-model="product.description">
         </label>
+        
         <label class="item item-input">
           <span class="input-label">Sizing category</span>
-          <input type="text" ng-model="product.productSizeCategory.description">
+          <select ng-options="productSizeCategory as productSizeCategory.description for productSizeCategory in productSizeCategories track by productSizeCategory.id" ng-model="product.productSizeCategory"></select>
         </label>
-        
+
         <label class="item item-input">
           <span class="input-label">Manufacturer</span>
           <select ng-options="manufacturer as manufacturer.name for manufacturer in manufacturers track by manufacturer.id" ng-model="product.manufacturer"></select>

@@ -49,8 +49,7 @@ SELECT `CLIENT_bkp`.`ID`,
     `CLIENT_bkp`.`STATEREGISTRATIONNUMBER`,
     `CLIENT_bkp`.`STREET`,
     `CLIENT_bkp`.`TRADENAME`
-FROM `CRM_DB`.`CLIENT_bkp`
-
+FROM `CRM_DB`.`CLIENT_bkp`;
 
 -- CRM_DB.PRODUCTSIZECATEGORY 
 insert into CRM_DB.PRODUCTSIZECATEGORY values(1,'Botas masculinas');
@@ -133,10 +132,9 @@ insert into CRM_DB.PRODUCT values(16,'camisa de algodão', 1, 1, 2);
 insert into CRM_DB.PRODUCT values(17,'camisa de algodão', 1, 1, 2);
 
 
-
-select * from CRM_DB.producttype
-
-
-
-
+-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
+-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
+-- ========== END OF SCRIPT 
+-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
+-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== 
 

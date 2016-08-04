@@ -96,8 +96,6 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
 
     };
 
-
-
       // salva novo produto via POST
       $scope.productSave = function() {
         console.log('Saving product', $scope.product);
@@ -112,19 +110,26 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
          
         res.success(function(data, status, headers, config) {
           console.log('product Save SUCCESS');
-          $scope.product.id = data;
-          $scope.products.push($scope.product);
-          $scope.closeProductAdd();
+          if(config.method === "PUT"){
+            $scope.closeProductAdd();
+          }
+          
+          else if(config.method === "POST"){
+            $scope.product.id = data; 
+            $scope.products.push($scope.product);
+            $scope.closeProductAdd();
+
+          }
 
         });
+
         res.error(function(data, status, headers, config) {
           console.log('product POST FAIL');
         });
 
-      $scope.closeProductAdd = function() {
-        $scope.modal.hide();
-      };
-
+        $scope.closeProductAdd = function() {
+          $scope.modal.hide();
+        };
 
       };
    

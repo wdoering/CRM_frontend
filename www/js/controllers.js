@@ -48,15 +48,27 @@ angular.module('CRM.controllers', [])
     vm.dynMarkers = []
     NgMap.getMap().then(function(map) {
       var bounds = new google.maps.LatLngBounds();
-      for (var k in map.customMarkers) {
-        var cm = map.customMarkers[k];
-        vm.dynMarkers.push(cm);
-        bounds.extend(cm.getPosition());
-      };
+      // //for (var k in map.customMarkers) {
+      // for (var k in vm.positions) {
+      //   var cm = map.customMarkers[k];
+      //   vm.dynMarkers.push(cm);
+      //   bounds.extend(cm.getPosition());
+      // };
       
-      vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
-      map.setCenter(bounds.getCenter());
-      map.fitBounds(bounds);  
+      //vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
+      //map.setCenter(bounds.getCenter());
+      //-29.7876900,-51.1370170   
+      var myLatLng =  {lat: -29.7876900, lng: -51.1370170};
+      map.fitBounds(bounds);
+      
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+
+      
+        
    });
 
 })

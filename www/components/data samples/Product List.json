@@ -1,0 +1,274 @@
+[
+    {
+        "id": 1,
+        "description": "bota de couro",
+        "productSizeCategory": {
+            "description": "Camisas masculinas",
+            "id": 3
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 2,
+        "description": "bota de couro 2",
+        "productSizeCategory": {
+            "description": "Camisas masculinas",
+            "id": 3
+        },
+        "manufacturer": {
+            "name": "Strassburger",
+            "id": 2
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 3,
+        "description": "bota de couro 3",
+        "productSizeCategory": {
+            "description": "Camisas masculinas",
+            "id": 3
+        },
+        "manufacturer": {
+            "name": "Sete Léguas",
+            "id": 3
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 4,
+        "description": "bota de couro 4",
+        "productSizeCategory": {
+            "description": "Camisas masculinas",
+            "id": 3
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 5,
+        "description": "bota de couro 5",
+        "productSizeCategory": {
+            "description": "Camisas masculinas",
+            "id": 3
+        },
+        "manufacturer": {
+            "name": "Strassburger",
+            "id": 2
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 6,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 7,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 8,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 9,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 10,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 11,
+        "description": "Alpargatas de couro",
+        "productSizeCategory": {
+            "description": "Botas femininas",
+            "id": 2
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 12,
+        "description": "bota de couro",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 1,
+            "description": "calçado"
+        }
+    },
+    {
+        "id": 18,
+        "description": "camisa de algodão",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 2,
+            "description": "camisa"
+        }
+    },
+    {
+        "id": 19,
+        "description": "camisa de algodão",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 2,
+            "description": "camisa"
+        }
+    },
+    {
+        "id": 20,
+        "description": "camisa de algodão",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 2,
+            "description": "camisa"
+        }
+    },
+    {
+        "id": 21,
+        "description": "camisa de algodão",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 2,
+            "description": "camisa"
+        }
+    },
+    {
+        "id": 22,
+        "description": "camisa de algodão",
+        "productSizeCategory": {
+            "description": "Botas masculinas",
+            "id": 1
+        },
+        "manufacturer": {
+            "name": "campeiro",
+            "id": 1
+        },
+        "productType": {
+            "id": 2,
+            "description": "camisa"
+        }
+    }
+]

@@ -1,7 +1,7 @@
-angular.module('CRM.controllers').controller('ProductCtrl', function(ProductService, $scope, $http, $timeout, $ionicModal) {
+angular.module('CRM.controllers').controller('ProductCtrl', function (ProductService, $scope, $http, $timeout, $ionicModal) {
 
     //context startup
-    ProductService.getProducts().then(function(response) {
+    ProductService.getProducts().then(function (response) {
 
         var products = response.data;
 
@@ -9,21 +9,21 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
 
     });
 
-    ProductService.getManufacturers().then(function(response) {
+    ProductService.getManufacturers().then(function (response) {
 
         var manufacturers = response.data;
         $scope.manufacturers = manufacturers;
 
     });
 
-    ProductService.getProductTypes().then(function(response) {
+    ProductService.getProductTypes().then(function (response) {
 
         var productTypes = response.data;
         $scope.productTypes = productTypes;
 
     });
 
-    ProductService.getProductSizeCategories().then(function(response) {
+    ProductService.getProductSizeCategories().then(function (response) {
 
         var productSizeCategories = response.data;
         $scope.productSizeCategories = productSizeCategories;
@@ -38,42 +38,42 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
     }
 
     //abre modal de novo produto
-    $scope.newProduct = function() {
+    $scope.newProduct = function () {
         $scope.product = {};
         $ionicModal.fromTemplateUrl('components/product/views/product-edit.html', {
             scope: $scope
-        }).then(function(modal) {
+        }).then(function (modal) {
 
             $scope.modal = modal;
             $scope.modal.show();
         });
 
-        $scope.closeProductAdd = function() {
+        $scope.closeProductAdd = function () {
             $scope.modal.hide();
         };
 
     };
 
 
-    $scope.editProduct = function(productId) {
+    $scope.editProduct = function (productId) {
 
         $ionicModal.fromTemplateUrl('components/product/views/product-edit.html', {
             scope: $scope
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.modal = modal;
             var indexOfProduct = ProductService.fetchIndex($scope.products, productId);
             $scope.product = $scope.products[indexOfProduct];
             $scope.modal.show();
         });
 
-        $scope.closeProductEdit = function() {
+        $scope.closeProductEdit = function () {
             $scope.modal.hide();
         };
 
     };
 
     // salva novo produto via POST
-    $scope.productSave = function() {
+    $scope.productSave = function () {
         var data = $scope.product;
 
         var res;
@@ -83,7 +83,7 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
             res = ProductService.submitNewProduct(data);
         }
 
-        res.success(function(data, status, headers, config) {
+        res.success(function (data, status, headers, config) {
             if (config.method === "PUT") {
                 $scope.closeProductAdd();
             }
@@ -97,27 +97,27 @@ angular.module('CRM.controllers').controller('ProductCtrl', function(ProductServ
 
         });
 
-        res.error(function(data, status, headers, config) {
+        res.error(function (data, status, headers, config) {
             console.log('product POST FAIL');
         });
 
-        $scope.closeProductAdd = function() {
+        $scope.closeProductAdd = function () {
             $scope.modal.hide();
         };
 
     };
 
 
-    $scope.deleteProduct = function(productId) {
+    $scope.deleteProduct = function (productId) {
 
         var index = ProductService.fetchIndex($scope.products, productId);
         var res = ProductService.deleteProduct(productId);
 
-        res.success(function(data, status, headers, config) {
+        res.success(function (data, status, headers, config) {
             if (data === true)
                 $scope.products.splice(index, 1);
         });
-        res.error(function(data, status, headers, config) {
+        res.error(function (data, status, headers, config) {
             console.log('product DELETE  FAIL');
         });
 

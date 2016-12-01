@@ -1,30 +1,30 @@
-angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANUFACTURER_CTRL, PRODUCT_CTRL, PRODUCT_TYPE_CTRL, PRODUCT_SIZE_CATEGORY_CTRL) {
+angular.module('CRM').service('ProductService', function ($http, SERVER_URL, MANUFACTURER_CTRL, PRODUCT_CTRL, PRODUCT_TYPE_CTRL, PRODUCT_SIZE_CATEGORY_CTRL) {
     var urlProduct = "/product";
     return {
-        all: function() {
+        all: function () {
             return [{ id: 1, description: 'product 1 STATIC' }, { id: 2, description: 'product 2 STATIC' }, { id: 3, description: 'product 3 STATIC' }];
         },
 
-        getProducts: function() {
+        getProducts: function () {
             console.log(SERVER_URL);
             return $http.get(SERVER_URL + PRODUCT_CTRL);
         },
 
-        submitNewProduct: function(productData) {
+        submitNewProduct: function (productData) {
             return $http.post(SERVER_URL + PRODUCT_CTRL, productData);
         },
 
-        deleteProduct: function(productId) {
+        deleteProduct: function (productId) {
             return $http.delete(SERVER_URL + PRODUCT_CTRL + "?id=" + productId);
         },
-        submitEditProduct: function(product) {
+        submitEditProduct: function (product) {
             return $http.put(SERVER_URL + PRODUCT_CTRL, product);
         },
 
         //this function should be moved to a generic class file...
-        fetchIndex: function(objList, productId) {
+        fetchIndex: function (objList, productId) {
             var indexofObject = -1;
-            angular.forEach(objList, function(product) {
+            angular.forEach(objList, function (product) {
 
                 if (productId === product.id) {
                     console.log(objList.indexOf(product));
@@ -35,13 +35,13 @@ angular.module('CRM').service('ProductService', function($http, SERVER_URL, MANU
             return indexofObject;
         },
 
-        getManufacturers: function() {
+        getManufacturers: function () {
             return $http.get(SERVER_URL + MANUFACTURER_CTRL);
         },
-        getProductTypes: function() {
+        getProductTypes: function () {
             return $http.get(SERVER_URL + PRODUCT_TYPE_CTRL);
         },
-        getProductSizeCategories: function() {
+        getProductSizeCategories: function () {
             return $http.get(SERVER_URL + PRODUCT_SIZE_CATEGORY_CTRL);
         }
 

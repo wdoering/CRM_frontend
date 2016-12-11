@@ -1,0 +1,14 @@
+
+
+{
+	"ErrosDeTransmissao": "1",
+	"NomeArqRaw": "file_P002_Serie2_N_2828.raw",
+	"NumeroDePacotesRecebidos": "1462",
+	"Placa_ID": "P001",
+	"Quando": "Fri Aug 19 17:04:56 2016",
+	"SensorP1": {        "ID": "CC_2.5MPa",        "Temperatura": "-1",        "ValMax": "10",        "ValMin": "-10",        "ValRef": "0"    },
+	"SensorP2": {        "ID": "FW1",        "Temperatura": -1,        "ValMax": 110,        "ValMin": "-110",        "ValRef": 0    },
+	"SensorP3": {        "ID": "FW2",        "Temperatura": -1,        "ValMax": 210,        "ValMin": "-210",        "ValRef": 0    },
+	"SensorP4": {        "ID": "FW3",        "Temperatura": -1,        "ValMax": 310,        "ValMin": "-310",        "ValRef": 0    },
+	"SensorP5": {        "ID": "FW4",        "Temperatura": -1,        "ValMax": 410,        "ValMin": "-410",        "ValRef": 0    }
+}

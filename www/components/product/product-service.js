@@ -6,7 +6,6 @@ angular.module('CRM').service('ProductService', function ($http, SERVER_URL, MAN
         },
 
         getProducts: function () {
-            console.log(SERVER_URL);
             return $http.get(SERVER_URL + PRODUCT_CTRL);
         },
 
@@ -27,7 +26,6 @@ angular.module('CRM').service('ProductService', function ($http, SERVER_URL, MAN
             angular.forEach(objList, function (product) {
 
                 if (productId === product.id) {
-                    console.log(objList.indexOf(product));
                     indexofObject = objList.indexOf(product);
                 }
 

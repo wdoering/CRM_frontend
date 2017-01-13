@@ -2,7 +2,9 @@ angular.module('CRM').service('ProductService', function ($http, SERVER_URL, MAN
     var urlProduct = "/product";
     return {
         all: function () {
-            return [{ id: 1, description: 'product 1 STATIC' }, { id: 2, description: 'product 2 STATIC' }, { id: 3, description: 'product 3 STATIC' }];
+            return [{ id: 1, description: 'product 1 STATIC', productSizeCategory: { "id": 2, "description": "Botas femininas" }, manufacturer: { "id": 1, "name": "campeiro" }, productType: { "id": 1, "description": "calçado" } },
+            { id: 2, description: 'product 2 STATIC', productSizeCategory: { "id": 2, "description": "Botas femininas" }, manufacturer: { "id": 1, "name": "campeiro" }, productType: { "id": 1, "description": "calçado" } },
+            { id: 3, description: 'product 3 STATIC', productSizeCategory: { "id": 2, "description": "Botas femininas" }, manufacturer: { "id": 1, "name": "campeiro" }, productType: { "id": 1, "description": "calçado" } }];
         },
 
         getProducts: function () {

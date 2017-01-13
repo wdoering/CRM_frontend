@@ -17,6 +17,16 @@ angular.module('CRM.controllers').controller('ProductCtrl', function (ProductSer
         var productTypes = response.data;
         $scope.productTypes = productTypes;
     });
+    if (!$scope.manufacturers) {
+        $scope.manufacturers = [{ "id": 1, "name": "campeiro" }, { "id": 2, "name": "Strassburger" }, { "id": 3, "name": "Sete Léguas" }]
+    }
+    if (!$scope.productTypes) {
+        $scope.productTypes = [{ "id": 1, "description": "calçado" }, { "id": 2, "description": "camisa" }, { "id": 3, "description": "calça" }];
+    }
+    if (!$scope.productSizeCategories) {
+        $scope.productSizeCategories = [{ "id": 1, "description": "Botas masculinas" }, { "id": 2, "description": "Botas femininas" }, { "id": 3, "description": "Camisas masculinas" }, { "id": 4, "description": "Camisas femininas" }, { "id": 5, "description": "Alpargatas masculinas" }, { "id": 6, "description": "Alpargatas femininas" }];
+    }
+
     ProductService.getProductSizeCategories().then(function (response) {
         var productSizeCategories = response.data;
         $scope.productSizeCategories = productSizeCategories;

@@ -1,11 +1,11 @@
 angular.module('CRM.controllers').controller('ProductCtrl', function (ProductService, $scope, $http, $timeout, $ionicModal) {
     //#region
     //context startup
+    //this is only so I can see the list working offline
     ProductService.getProducts().then(function (response) {
         var products = response.data;
         $scope.products = products;
     });
-    //this is only so I can see the list working offline
     if (typeof $scope.products === 'undefined') {
         $scope.products = ProductService.all();
     }
@@ -79,6 +79,9 @@ angular.module('CRM.controllers').controller('ProductCtrl', function (ProductSer
             if (config.method === "PUT") {
                 $scope.closeProductAdd();
             } else if (config.method === "POST") {
+                //adicionar logica do toast aqui
+                // sefodeu! soh tem no ionic 2 HAHA
+                //I need a new project.... gotta finish my shit
                 $scope.product.id = data;
                 $scope.products.push($scope.product);
                 $scope.closeProductAdd();
